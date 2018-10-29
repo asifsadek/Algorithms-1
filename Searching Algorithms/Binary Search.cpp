@@ -52,3 +52,66 @@ int main()
     printf("%d\n",b_search(0, n-1, x));
     return 0;
 }
+
+/* AsifSadek
+*/
+# After Change By Asif
+
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+#include <iostream>
+#include <vector>
+#include <list>
+#include <string>
+#include <algorithm>
+#include <queue>
+#include <stack>
+#include <set>
+#include <map>
+#include <complex>
+#define MAX_N 1000001
+using namespace std;
+typedef long long lld;
+
+int n, x;
+int niz[MAX_N];
+
+//Binarna pretraga elementa u sortiranom nizu
+//Slozenost: O(log n)
+
+inline int b_search(int left, int right, int x)
+{
+    int i = left;
+    int j = right;
+    while (i < j)
+    {
+        int mid = (i+j)/2;
+        if (niz[mid] == x) return mid;
+        if (niz[mid] < x) i = mid+1;
+        else j = mid-1;
+    }
+    if (niz[i] == x) return i;
+    return -1;
+}
+
+int main()
+{
+    scanf("%d",&n);
+    for(int i = 0 ; i < n ; i++)
+    {
+        scanf("%d",&niz[i]);
+    }
+    scanf("%d",&x);
+    if(b_search(0, n-1, x) == -1)
+    {
+        printf("Not Found\n");
+    }
+    else
+    {
+
+    printf("Founded in :%d\n",b_search(0, n-1, x));
+    }
+    return 0;
+}
+
